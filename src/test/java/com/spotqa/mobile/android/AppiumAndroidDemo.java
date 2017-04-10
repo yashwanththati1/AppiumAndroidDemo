@@ -25,5 +25,7 @@ public class AppiumAndroidDemo {
         capabilities.setCapability("appActivity", "net.one97.paytm.AJRJarvisSplash");
 
         driver = new AndroidDriver<MobileElement>(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
+
+        System.out.println(driver.getTitle());
     }
 }

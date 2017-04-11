@@ -23,6 +23,7 @@ public class AppiumAndroidDemo extends BaseDriver{
         popUp("com.android.packageinstaller:id/dialog_container", "com.android.packageinstaller:id/permission_allow_button");
 
         ((AndroidDriver)driver).findElementByAndroidUIAutomator("new UiSelector().text(\"Do It Later\")").click();
+        //((AndroidDriver) driver).configuratorSetScrollAcknowledgmentTimeout();
         ((AndroidDriver)driver).findElementByAndroidUIAutomator("new UiSelector().resourceId(\"net.one97.paytm:id/help_overlay\")").click();
     }
 }

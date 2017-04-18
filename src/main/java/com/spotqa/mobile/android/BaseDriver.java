@@ -4,7 +4,10 @@ import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Parameters;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -18,20 +21,26 @@ public class BaseDriver {
     AppiumDriver<MobileElement> driver;
     DesiredCapabilities capabilities;
 
-    @BeforeSuite
-    public void setUp(){
+    @BeforeClass
+    @Parameters({"port","device","platform_name","platform_version"})
+    public void setUp(String port,String device,String platform_name,String platform_version){
         capabilities = new DesiredCapabilities();
         capabilities.setCapability("platform", "Android");
+        /**
+        Android Emulator Capabilities
         capabilities.setCapability("platformVersion", "6.0");
-        capabilities.setCapability("deviceName", "192.168.155.101:5555");
+        capabilities.setCapability("deviceName", "192.168.155.102:5555");
         capabilities.setCapability("app", System.getProperty("user.dir")+"\\resources\\paytm.apk");
         capabilities.setCapability("appPackage", "net.one97.paytm");
         capabilities.setCapability("appActivity", "net.one97.paytm.AJRJarvisSplash");
-        //capabilities.setCapability("appActivity", "net.one97.paytm.languageSelector.AJRLanguageSelectorActivity");
+        */
+        capabilities.setCapability("platformVersion", platform_version);
+        capabilities.setCapability("deviceName", device);
+        capabilities.setCapability("appPackage", "net.one97.paytm");
+        capabilities.setCapability("appActivity", "net.one97.paytm.AJRJarvisSplash");
         capabilities.setCapability("autoAcceptAlerts", true);
-
         try {
-            driver = new AndroidDriver<MobileElement>(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
+            driver = new AndroidDriver<MobileElement>(new URL("http://127.0.0.1:"+port+"/wd/hub"), capabilities);
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }

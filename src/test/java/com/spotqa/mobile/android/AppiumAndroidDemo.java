@@ -25,5 +25,6 @@ public class AppiumAndroidDemo extends BaseDriver{
         ((AndroidDriver)driver).findElementByAndroidUIAutomator("new UiSelector().text(\"Do It Later\")").click();
         //((AndroidDriver) driver).configuratorSetScrollAcknowledgmentTimeout();
         ((AndroidDriver)driver).findElementByAndroidUIAutomator("new UiSelector().resourceId(\"net.one97.paytm:id/help_overlay\")").click();
+
     }
 }

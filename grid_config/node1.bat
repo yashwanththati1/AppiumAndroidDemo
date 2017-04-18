@@ -1,0 +1,1 @@
+appium -a 127.0.0.1 -p 4723 --no-reset --bootstrap-port 4728 -U 192.168.155.101:5555 --nodeconfig C:/projects/mobile/AppiumAndroidDemo/resources/node1_emulator1_config.json
